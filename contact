@@ -98,7 +98,7 @@
 
         <div class="actions">
           <button type="submit" class="btn btn-primary">إرسال</button>
-          <a class="btn" href="صفحة رئيسية.html">العودة للصفحة الرئيسية</a>
+          <a class="btn" href="index.html">العودة للصفحة الرئيسية</a>
           <span class="muted">سيتم التحقق من الحقول قبل الإرسال</span>
         </div>
       </form>
@@ -108,10 +108,10 @@
   <footer class="container">
     صُنِع بحب بواسطة أماني
     <div class="footer-links">
-      <a class="btn" href="صفحة رئيسية.html">الرئيسية</a>
-      <a class="btn" href="من نحن.html">من نحن</a>
-      <a class="btn btn-primary" href="Get in touch.html">تواصل معنا</a>
-      <a class="btn" href="سياسة خصوصية.html">سياسة الخصوصية</a>
+      <a class="btn" href="index.html">الرئيسية</a>
+      <a class="btn" href="about.html">من نحن</a>
+      <a class="btn btn-primary" href="contact.html">تواصل معنا</a>
+      <a class="btn" href="privacy.html">سياسة الخصوصية</a>
     </div>
   </footer>
 
@@ -214,3 +214,4 @@
   </script>
 </body>
 </html>
+
