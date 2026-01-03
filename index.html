@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Pink Study — مخطط الدراسة الوردي</title>
+  <meta name="description" content="مخطط أسبوعي لطيف بستايـل دفتر وردي + مهام يومية + حفظ تلقائي + نوافذ تحفيزية" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* لوحة باستيل وردية */
+      --bg:#fff7fb;           /* وردي فاتح جدًا */
+      --ink:#2b2433;          /* حبر غامق */
+      --muted:#6b6472;        /* نص ثانوي */
+      --paper:#ffffff;        /* ورق */
+      --card:#fff0f6;         /* بطاقة فاتحة */
+      --line:#ffd7ea;         /* خطوط دفتر */
+      --accent:#ff7eb6;       /* وردي متوسط */
+      --accent-2:#c084fc;     /* بنفسجي باستيل */
+      --accent-3:#8be0e0;     /* فيروزي فاتح */
+      --ok:#16a34a;           /* نجاح */
+      --warn:#e11d48;         /* تحذير */
+      --ring: 0 0 0 3px rgba(255,126,182,.25);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: 'Cairo', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial, sans-serif; color:var(--ink); background:var(--bg);
+      /* خلفية محاكية للدفتر */
+      background-image: repeating-linear-gradient( to bottom, var(--bg), var(--bg) 28px, var(--line) 29px, var(--bg) 30px );
+    }
+
+    .container{max-width:1150px; margin:auto; padding:0 1rem}
+
+    /* شريط علوي */
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px); background:rgba(255,247,251,.7); border-bottom:1px solid #ffe0ef}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:.8rem 0}
+    .brand{display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.2px}
+    .logo{width:28px; height:28px; border-radius:8px; background:conic-gradient(from 90deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent)); box-shadow:0 6px 18px rgba(255,126,182,.22)}
+    .btn{border:0; background:var(--paper); color:var(--ink); padding:.55rem .9rem; border-radius:999px; cursor:pointer; transition:.2s; font-weight:700; border:1px solid #ffd7ea}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 20px rgba(255,126,182,.18)}
+    .btn-primary{background:var(--accent); color:#fff; border-color:var(--accent)}
+    .btn-ghost{background:transparent}
+
+    /* هيدر */
+    header{padding:3.2rem 0 1.6rem}
+    .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:2rem; align-items:center}
+    .hero h1{font-size:clamp(1.8rem,3.2vw,2.7rem); margin:.2rem 0 .6rem; line-height:1.25}
+    .hero p{color:var(--muted)}
+    .card{background:var(--paper); border:1px solid #ffd7ea; border-radius:20px; padding:1rem; box-shadow:0 10px 25px rgba(255,126,182,.10)}
+    .preview{aspect-ratio:4/3; border-radius:16px; background:radial-gradient( circle at 70% -10%, rgba(255,126,182,.3), transparent 50%), linear-gradient(135deg,#ffe9f4,#fff); display:grid; place-items:center; font-weight:800; color:#d63384}
+
+    /* فراشات متحركة لطيفة */
+    .butterflies{position:fixed; inset:0; pointer-events:none; z-index:0}
+    .bf{position:absolute; width:22px; height:18px; background:radial-gradient(circle at 30% 50%, #ff9ac2, #ff7eb6 60%); border-radius:40% 60% 60% 40% / 60% 40% 60% 40%; transform-origin:center; opacity:.8; filter:drop-shadow(0 4px 10px rgba(255,126,182,.35))}
+    .bf::after{content:""; position:absolute; right:-10px; top:0; width:22px; height:18px; background:radial-gradient(circle at 70% 50%, #b388ff, #c084fc 60%); border-radius:60% 40% 40% 60% / 40% 60% 40% 60%}
+    @keyframes fly{ 0%{ transform: translateY(0) translateX(0) rotate(0)} 50%{ transform: translateY(-40px) translateX(40px) rotate(6deg)} 100%{ transform: translateY(-80px) translateX(0) rotate(-6deg)} }
+    @keyframes flap{ 0%,100%{ transform: rotate(0deg)} 50%{ transform: rotate(8deg)} }
+    .bf{ animation: fly 14s linear infinite; }
+    .bf::after{ animation: flap 1s ease-in-out infinite }
+
+    /* أقسام */
+    section{padding:2rem 0}
+    h2{font-size:clamp(1.2rem,2.2vw,1.8rem); margin:0 0 1rem}
+
+    .grid{display:grid; gap:1rem}
+    .cols-2{grid-template-columns:1.2fr .8fr}
+
+    /* جدول المخطط الأسبوعي */
+    .planner{display:grid; gap:10px; grid-template-columns: 110px repeat(7, 1fr)}
+    .slot{display:flex; align-items:center; justify-content:center; font-weight:800; color:#a15e7b}
+    .cell{background:var(--paper); border:1px dashed #ffcfe6; border-radius:14px; min-height:78px; padding:.6rem; outline:none}
+    .cell:focus{box-shadow:var(--ring); border-color:#ffb3d1}
+
+    /* موادّي */
+    .subjects{display:flex; gap:.6rem; flex-wrap:wrap}
+    .chip{display:inline-flex; align-items:center; gap:.4rem; padding:.38rem .7rem; border-radius:999px; background:var(--paper); border:1px solid #ffd7ea}
+    .chip input{border:0; background:transparent; color:var(--ink); min-width:70px; outline:none}
+    .chip button{border:0; background:transparent; cursor:pointer}
+
+    /* مهام */
+    .tasks .row{display:flex; gap:.5rem}
+    .tasks input[type="text"]{flex:1; padding:.7rem .8rem; border-radius:12px; border:1px solid #ffd7ea; background:var(--paper)}
+    .task{display:flex; align-items:center; justify-content:space-between; gap:.6rem; background:var(--paper); border:1px solid #ffd7ea; border-radius:12px; padding:.6rem .7rem}
+    .task.done{opacity:.7; text-decoration:line-through}
+
+    .bar{height:10px; border-radius:999px; background:#ffe4f1; overflow:hidden}
+    .bar > span{display:block; height:100%; width:0%; background:linear-gradient(90deg, #ff7eb6, #c084fc)}
+    .stats{display:flex; gap:1rem; color:#a15e7b; font-weight:800}
+
+    /* مهام اليوم السريعة */
+    .quick{display:flex; flex-direction:column; gap:.5rem}
+    .qitem{display:flex; align-items:center; justify-content:space-between; background:var(--paper); border:1px solid #ffd7ea; border-radius:10px; padding:.5rem .6rem}
+    .qitem .actions button{border:0; padding:.35rem .6rem; border-radius:10px; cursor:pointer}
+    .yes{background:#e8fff0; border:1px solid #b9efd0}
+    .no{background:#fff0f3; border:1px solid #ffd1dc}
+
+    /* نافذة تحفيزية (popup) */
+    .popup{position:fixed; left:50%; bottom:28px; transform:translateX(-50%) scale(.95); background:#ffffff; border:1px solid #ffd7ea; padding:.8rem 1rem; border-radius:14px; box-shadow:0 18px 30px rgba(255,126,182,.22); z-index:80; opacity:0; pointer-events:none; transition:.3s ease}
+    .popup.show{opacity:1; transform:translateX(-50%) scale(1)}
+
+    footer{padding:2rem 0; border-top:1px solid #ffd7ea; color:#a15e7b; text-align:center}
+
+    @media (max-width: 980px){ .hero{grid-template-columns:1fr} .cols-2{grid-template-columns:1fr} .planner{grid-template-columns: 90px repeat(7, 1fr)} }
+      /* ====== إعلانات Placeholder ====== */
+    .ad-slot{display:block; background:repeating-linear-gradient(45deg,#fff1f7,#fff1f7 10px,#ffe3f0 10px,#ffe3f0 20px); border:2px dashed #ffb3d1; color:#a15e7b; text-align:center; padding:16px; border-radius:14px; font-weight:800}
+    .ad-note{font-size:.85rem; color:#b27a93; margin-top:.35rem}
+  </style>
+  
+  <!-- ===== AdSense Placeholder (Disabled) =====
+       بعد الموافقة من Google AdSense:
+       1) بدّلي CLIENT_ID برقمك
+       2) فعّلي السكربت بإزالة التعليقات
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-CLIENT_ID" crossorigin="anonymous"></script>
+  -->
+</head>
+<body>
+  <!-- فراشات عشوائية -->
+  <div class="butterflies" aria-hidden="true">
+    <div class="bf" style="top:70%; left:5%; animation-duration:16s"></div>
+    <div class="bf" style="top:60%; left:20%; animation-duration:18s"></div>
+    <div class="bf" style="top:75%; left:40%; animation-duration:15s"></div>
+    <div class="bf" style="top:65%; left:70%; animation-duration:17s"></div>
+    <div class="bf" style="top:80%; left:85%; animation-duration:19s"></div>
+  </div>
+
+  <nav class="nav">
+  <div class="container nav-inner">
+    <div class="brand"><span class="logo"></span><span>My Pink Study</span></div>
+
+    <div style="display:flex; gap:.5rem; align-items:center">
+        <a class="btn btn-primary" href="Get in touch.html"> للتواصل</a>
+                <a class="btn btn-primary" href="سياسة خصوصية.html">سياسة الخصوصية </a>
+
+
+      <button class="btn" id="clearAll" title="تفريغ">تفريغ</button>
+      <a class="btn btn-primary" href="#tasks">المهام</a>
+    </div>
+  </div>
+</nav>
+
+<!-- أضيفي هذا السكربت أسفل الصفحة قبل </body> لتفعيل حالة الرابط النشط -->
+<script>
+  // تمييز رابط الصفحة الحالية
+  (function(){
+    const path = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav a.btn[href]').forEach(a=>{
+      const href = a.getAttribute('href');
+      if (href === path || (path === '' && href === 'index.html')) {
+        a.classList.add('active');
+        a.setAttribute('aria-current','page');
+      }
+    });
+  })();
+</script>
+
+  <header class="container">
+    <div class="hero">
+      <div>
+        <h1>دفتر دراستك الوردي — نظّمي أسبوعك وخلي الإنجاز وردة كل يوم 🌸</h1>
+        <p>اكتبي موادك بنفسك وخططي صباح بعد الظهر مساء. أضيفي مهام يومية وسجّلي إنجازك. كل شيء محفوظ تلقائيًا على جهازك. لما تعلّمي مهمة منجزة بتطلع نافذة تحفيزية رمزية .</p>
+        <div class="card">
+          <h2>موادّي</h2>
+          <div class="subjects" id="subjects"></div>
+          <div style="display:flex; gap:.5rem; margin-top:.6rem">
+            <input id="subjectInput" placeholder="اكتبي اسم مادة" class="btn" style="flex:1; text-align:right" />
+            <button class="btn btn-primary" id="addSubject">إضافة مادة</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview"><div>My Pink Study<br><small>دفتر لطيف • حفظ تلقائي</small></div></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="container">
+    <div class="grid cols-2">
+      <!-- ====== Planner table ====== -->
+      <div class="card">
+        <h2>الجدول الأسبوعي</h2>
+        <div class="planner" id="planner">
+          <div class="slot head"></div>
+          <div class="slot head">الأحد</div>
+          <div class="slot head">الإثنين</div>
+          <div class="slot head">الثلاثاء</div>
+          <div class="slot head">الأربعاء</div>
+          <div class="slot head">الخميس</div>
+          <div class="slot head">الجمعة</div>
+          <div class="slot head">السبت</div>
+
+          <div class="slot">صباح</div>
+          <div class="cell" contenteditable="true" data-id="0"></div>
+          <div class="cell" contenteditable="true" data-id="1"></div>
+          <div class="cell" contenteditable="true" data-id="2"></div>
+          <div class="cell" contenteditable="true" data-id="3"></div>
+          <div class="cell" contenteditable="true" data-id="4"></div>
+          <div class="cell" contenteditable="true" data-id="5"></div>
+          <div class="cell" contenteditable="true" data-id="6"></div>
+
+          <div class="slot">بعد الظهر</div>
+          <div class="cell" contenteditable="true" data-id="7"></div>
+          <div class="cell" contenteditable="true" data-id="8"></div>
+          <div class="cell" contenteditable="true" data-id="9"></div>
+          <div class="cell" contenteditable="true" data-id="10"></div>
+          <div class="cell" contenteditable="true" data-id="11"></div>
+          <div class="cell" contenteditable="true" data-id="12"></div>
+          <div class="cell" contenteditable="true" data-id="13"></div>
+
+          <div class="slot">مساء</div>
+          <div class="cell" contenteditable="true" data-id="14"></div>
+          <div class="cell" contenteditable="true" data-id="15"></div>
+          <div class="cell" contenteditable="true" data-id="16"></div>
+          <div class="cell" contenteditable="true" data-id="17"></div>
+          <div class="cell" contenteditable="true" data-id="18"></div>
+          <div class="cell" contenteditable="true" data-id="19"></div>
+          <div class="cell" contenteditable="true" data-id="20"></div>
+        </div>
+      </div>
+
+      <!-- ====== Tasks & quick ====== -->
+      <div class="card" id="tasks">
+        <h2>قائمة المهام</h2>
+        <div class="tasks">
+          <div class="row">
+            <input type="text" id="taskInput" placeholder="اكتبي مهمة مثل: مراجعة وحدة 3" />
+            <button class="btn btn-primary" id="addTask">إضافة</button>
+          </div>
+          <div class="stats"><span id="statCount">0/0</span><span id="statPercent">0%</span></div>
+          <div class="bar"><span id="barFill"></span></div>
+          <!-- Ad Slot: تحت شريط التقدم -->
+          <div class="ad-slot" id="ad-tasks">
+            مساحة إعلان  
+            <!-- مثال بعد الموافقة:
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-CLIENT_ID" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            -->
+          </div>
+          <div class="ad-note">إعلان </div>
+          <div id="taskList" style="margin-top:.6rem"></div>
+        </div>
+
+        <h2 style="margin-top:1rem">مهام اليوم السريعة</h2>
+        <div class="quick" id="quickList"></div>
+        <div class="row" style="margin-top:.5rem">
+          <input type="text" id="quickInput" placeholder="أضيفي مهمة سريعة لليوم" />
+          <button class="btn" id="addQuick">إضافة</button>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <b>سجل الإنجاز</b>
+          <div id="history" style="color:var(--muted); font-size:.95rem; margin-top:.4rem">لا يوجد سجل بعد</div>
+        </div>
+      </div>
+    </div>
+    <!-- إعلان منتصف الصفحة -->
+  <section class="container">
+    <div class="ad-slot" id="ad-mid">  — الاعلان     .</div>
+    <div class="ad-note"></div>
+  </section>
+
+  <!-- popup -->
+  <div class="popup" id="popup">🌟</div>
+
+  <footer class="container">صُنِع بحب بواسطة أماني</footer>
+
+  <script>
+    // ===== butterflies random slight drift =====
+    setInterval(()=>{
+      document.querySelectorAll('.bf').forEach((el,i)=>{
+        const dx = (Math.random()*2-1)*10; const dy = (Math.random()*2-1)*8;
+        el.style.transform = `translate(${dx}px, ${dy}px)`;
+      });
+    }, 1600);
+
+    // ===== planner storage =====
+    const planner = document.getElementById('planner');
+    const cells = [...planner.querySelectorAll('.cell')];
+    function loadPlanner(){ try{ const data = JSON.parse(localStorage.getItem('pink_planner')||'[]'); data.forEach((v,i)=>{ if(cells[i]) cells[i].innerHTML = v || '' }); }catch(e){} }
+    function savePlanner(){ const data = cells.map(c=>c.innerHTML); localStorage.setItem('pink_planner', JSON.stringify(data)); }
+    cells.forEach(c=> c.addEventListener('input', savePlanner));
+    loadPlanner();
+
+    // ===== subjects =====
+    const subjectsBox = document.getElementById('subjects');
+    const subjInput = document.getElementById('subjectInput');
+    const addSubjectBtn = document.getElementById('addSubject');
+    function getSubjects(){ try{ return JSON.parse(localStorage.getItem('pink_subjects')||'[]'); }catch(e){ return []; } }
+    function setSubjects(arr){ localStorage.setItem('pink_subjects', JSON.stringify(arr)); }
+    function renderSubjects(){
+      const list = getSubjects(); subjectsBox.innerHTML='';
+      list.forEach((s,idx)=>{
+        const chip = document.createElement('div'); chip.className='chip';
+        chip.innerHTML = `<input value="${s}" aria-label="مادة" /><button title="حذف">✖</button>`;
+        const inp = chip.querySelector('input');
+        inp.addEventListener('input', ()=>{ const L=getSubjects(); L[idx]=inp.value; setSubjects(L); });
+        chip.querySelector('button').addEventListener('click', ()=>{ const L=getSubjects(); L.splice(idx,1); setSubjects(L); renderSubjects(); });
+        subjectsBox.appendChild(chip);
+      });
+    }
+    addSubjectBtn.addEventListener('click', ()=>{ const v=subjInput.value.trim(); if(!v) return; const L=getSubjects(); L.push(v); setSubjects(L); subjInput.value=''; renderSubjects(); });
+    subjInput.addEventListener('keydown', e=>{ if(e.key==='Enter'){ addSubjectBtn.click(); }});
+    renderSubjects();
+
+    // ===== tasks =====
+    const input = document.getElementById('taskInput');
+    const addBtn = document.getElementById('addTask');
+    const taskList = document.getElementById('taskList');
+    const statCount = document.getElementById('statCount');
+    const statPercent = document.getElementById('statPercent');
+    const barFill = document.getElementById('barFill');
+    const popup = document.getElementById('popup');
+
+    const EMOJI = ['🌟','👏🏻','💖','✨','💪🏻','🦋','🌸','🎉','🏆','🩷'];
+
+    function showPopup(){ popup.textContent = EMOJI[Math.floor(Math.random()*EMOJI.length)]; popup.classList.add('show'); setTimeout(()=> popup.classList.remove('show'), 1300); }
+
+    function getTasks(){ try{ return JSON.parse(localStorage.getItem('pink_tasks')||'[]'); }catch(e){ return []; } }
+    function setTasks(arr){ localStorage.setItem('pink_tasks', JSON.stringify(arr)); }
+
+    function renderTasks(){
+      const tasks = getTasks(); taskList.innerHTML = '';
+      tasks.forEach((t,idx)=>{
+        const el = document.createElement('div'); el.className = 'task' + (t.done ? ' done' : '');
+        el.innerHTML = `
+          <div style="display:flex; align-items:center; gap:.6rem">
+            <input type="checkbox" ${t.done? 'checked':''} aria-label="إنجاز" />
+            <span>${t.text}</span>
+          </div>
+          <div style="display:flex; gap:.35rem">
+            <button class="btn btn-ghost" data-act="up">⬆</button>
+            <button class="btn btn-ghost" data-act="down">⬇</button>
+            <button class="btn btn-ghost" data-act="del">🗑️</button>
+          </div>`;
+        el.querySelector('input').addEventListener('change', (e)=>{
+          const was = tasks[idx].done; tasks[idx].done = e.target.checked; setTasks(tasks); renderTasks();
+          if(!was && tasks[idx].done){ addHistory(1); showPopup(); }
+        });
+        el.querySelector('[data-act="del"]').addEventListener('click', ()=>{ tasks.splice(idx,1); setTasks(tasks); renderTasks(); });
+        el.querySelector('[data-act="up"]').addEventListener('click', ()=>{ if(idx>0){ const tmp=tasks[idx-1]; tasks[idx-1]=tasks[idx]; tasks[idx]=tmp; setTasks(tasks); renderTasks(); }});
+        el.querySelector('[data-act="down"]').addEventListener('click', ()=>{ if(idx<tasks.length-1){ const tmp=tasks[idx+1]; tasks[idx+1]=tasks[idx]; tasks[idx]=tmp; setTasks(tasks); renderTasks(); }});
+        taskList.appendChild(el);
+      });
+      const total = tasks.length, done = tasks.filter(t=>t.done).length; const percent = total? Math.round(done/total*100):0;
+      statCount.textContent = `${done}/${total}`; statPercent.textContent = `${percent}%`; barFill.style.width = percent + '%';
+    }
+
+    addBtn.addEventListener('click', ()=>{ const txt = input.value.trim(); if(!txt) return; const tasks = getTasks(); tasks.push({text:txt, done:false}); setTasks(tasks); input.value=''; renderTasks(); });
+    input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ addBtn.click(); }});
+    renderTasks();
+
+    // ===== quick today list with ✓ / ✗ =====
+    const quickList = document.getElementById('quickList');
+    const quickInput = document.getElementById('quickInput');
+    const addQuick = document.getElementById('addQuick');
+    function getQuick(){ try{ return JSON.parse(localStorage.getItem('pink_quick')||'[]'); }catch(e){ return []; } }
+    function setQuick(arr){ localStorage.setItem('pink_quick', JSON.stringify(arr)); }
+    function renderQuick(){
+      const arr = getQuick(); quickList.innerHTML='';
+      arr.forEach((q,i)=>{
+        const row = document.createElement('div'); row.className='qitem';
+        row.innerHTML = `<span>${q.text}</span><div class="actions"><button class="yes">✓</button> <button class="no">✗</button> <button class="btn btn-ghost">🗑️</button></div>`;
+        row.querySelector('.yes').addEventListener('click',()=>{ addHistory(1); showPopup(); arr.splice(i,1); setQuick(arr); renderQuick(); });
+        row.querySelector('.no').addEventListener('click',()=>{ arr.splice(i,1); setQuick(arr); renderQuick(); });
+        row.querySelector('.btn').addEventListener('click',()=>{ arr.splice(i,1); setQuick(arr); renderQuick(); });
+        quickList.appendChild(row);
+      });
+    }
+    addQuick.addEventListener('click', ()=>{ const v=quickInput.value.trim(); if(!v) return; const arr=getQuick(); arr.push({text:v}); setQuick(arr); quickInput.value=''; renderQuick(); });
+    quickInput.addEventListener('keydown', e=>{ if(e.key==='Enter'){ addQuick.click(); }});
+    renderQuick();
+
+    // ===== history per day =====
+    const historyBox = document.getElementById('history');
+    function getHistory(){ try{ return JSON.parse(localStorage.getItem('pink_history')||'{}'); }catch(e){ return {}; } }
+    function setHistory(obj){ localStorage.setItem('pink_history', JSON.stringify(obj)); }
+    function todayKey(){ const d=new Date(); return d.toISOString().slice(0,10); }
+    function addHistory(n){ const H=getHistory(); const k=todayKey(); H[k]=(H[k]||0)+n; setHistory(H); renderHistory(); }
+    function renderHistory(){ const H=getHistory(); const keys=Object.keys(H).sort().slice(-7); if(!keys.length){ historyBox.textContent='لا يوجد سجل بعد'; return; } historyBox.innerHTML = keys.map(k=>`<div>📌 ${k}: ${H[k]} إنجاز</div>`).join(''); }
+    renderHistory();
+
+    // ===== clear all =====
+   document.getElementById('clearAll').addEventListener('click', ()=>{
+  if(confirm('تفريغ الجدول والمهام والمواد والسجل؟')){
+    ['pink_planner','pink_tasks','pink_quick','pink_subjects','pink_history']
+      .forEach(localStorage.removeItem.bind(localStorage));
+    cells.forEach(c=>c.innerHTML='');
+    renderTasks(); renderQuick(); renderSubjects(); renderHistory();
+  }
+});
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>من نحن — My Pink Study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="تعرفي على My Pink Study: دفتر الدراسة الوردي الذي يسهّل تنظيم أسبوعك ومهامك بطريقة حلوه وبسيطة." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fff7fb; --ink:#2b2433; --muted:#6b6472;
+      --paper:#ffffff; --line:#ffd7ea; --accent:#ff7eb6; --accent-2:#c084fc; --accent-3:#8be0e0;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:'Cairo',sans-serif; color:var(--ink); background:var(--bg);
+      /* خلفية دفتر */
+      background-image:repeating-linear-gradient(to bottom,var(--bg),var(--bg) 28px,var(--line) 29px,var(--bg) 30px);
+    }
+    .container{max-width:1100px; margin:auto; padding:0 1rem}
+    .nav{position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(6px); background:rgba(255,247,251,.75); border-bottom:1px solid #ffe0ef}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:.9rem 0}
+    .brand{display:flex; align-items:center; gap:.6rem; font-weight:800}
+    .logo{width:28px; height:28px; border-radius:8px; background:conic-gradient(from 90deg,var(--accent),var(--accent-2),var(--accent-3),var(--accent)); box-shadow:0 6px 18px rgba(255,126,182,.22)}
+    .btn{border:1px solid #ffd7ea; background:#fff; color:var(--ink); padding:.55rem .95rem; border-radius:999px; cursor:pointer; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:.45rem}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 20px rgba(255,126,182,.18)}
+    .btn-primary{background:var(--accent); border-color:var(--accent); color:#fff}
+    header{padding:2.6rem 0 1.2rem}
+    h1{font-size:clamp(1.8rem,3.2vw,2.6rem); margin:.2rem 0 .5rem}
+    p.lead{color:var(--muted); margin:0}
+    .grid{display:grid; gap:1rem; grid-template-columns:1.2fr .8fr}
+    .card{background:#fff; border:1px solid #ffd7ea; border-radius:20px; padding:1.1rem; box-shadow:0 10px 25px rgba(255,126,182,.10)}
+    .points{display:grid; gap:.8rem}
+    .point{background:#fff; border:1px dashed #ffcfe6; border-radius:14px; padding:.75rem 1rem}
+    .badge{display:inline-block; padding:.25rem .6rem; border-radius:999px; background:#fff0f6; border:1px solid #ffd7ea; font-weight:700; color:#d63384; margin-bottom:.35rem}
+    .motive{display:grid; gap:.8rem; margin-top:.5rem}
+    .motive .row{display:flex; align-items:center; gap:.6rem}
+    .motive .row span{font-size:1.25rem}
+    footer{padding:1.6rem 0; text-align:center; color:#a15e7b; border-top:1px solid #ffd7ea; margin-top:1.4rem}
+    .footer-links{margin-top:.5rem; display:flex; gap:.7rem; justify-content:center; flex-wrap:wrap}
+    @media (max-width:980px){ .grid{grid-template-columns:1fr} }
+
+    /* فراشات لطيفة */
+    .butterflies{position:fixed; inset:0; pointer-events:none; z-index:0}
+    .bf{position:absolute; width:22px; height:18px; background:radial-gradient(circle at 30% 50%, #ff9ac2, #ff7eb6 60%); border-radius:40% 60% 60% 40% / 60% 40% 60% 40%; opacity:.85; filter:drop-shadow(0 4px 10px rgba(255,126,182,.35)); animation:fly 14s linear infinite}
+    .bf::after{content:""; position:absolute; right:-10px; top:0; width:22px; height:18px; background:radial-gradient(circle at 70% 50%, #b388ff, #c084fc 60%); border-radius:60% 40% 40% 60% / 40% 60% 40% 60%; animation:flap 1s ease-in-out infinite}
+    @keyframes fly{0%{transform:translateY(0) translateX(0) rotate(0)}50%{transform:translateY(-40px) translateX(40px) rotate(6deg)}100%{transform:translateY(-80px) translateX(0) rotate(-6deg)}}
+    @keyframes flap{0%,100%{transform:rotate(0)}50%{transform:rotate(8deg)}}
+  </style>
+</head>
+<body>
+  <!-- فراشات -->
+  <div class="butterflies" aria-hidden="true">
+    <div class="bf" style="top:72%; left:8%; animation-duration:16s"></div>
+    <div class="bf" style="top:64%; left:22%; animation-duration:18s"></div>
+    <div class="bf" style="top:78%; left:43%; animation-duration:15s"></div>
+    <div class="bf" style="top:66%; left:71%; animation-duration:17s"></div>
+    <div class="bf" style="top:82%; left:86%; animation-duration:19s"></div>
+  </div>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="logo"></span> <span>My Pink Study</span></div>
+      <div style="display:flex; gap:.5rem; align-items:center">
+        <a class="btn" href="سياسة خصوصية.html">سياسة الخصوصية</a>
+        <a class="btn" href="Get in touch.html">تواصل معنا</a>
+        <a class="btn btn-primary" href="صفحة رئيسية.html">الرجوع للرئيسية</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="container">
+    <h1>من نحن</h1>
+    <p class="lead">نحن هنا لنحوّل التخطيط والدراسة إلى تجربة ألطف، أبهى، وأسهل — خطوة صغيرة كل يوم تصنع فرقًا كبيرًا 🌸</p>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <section class="card">
+        <span class="badge">فكرة My Pink Study</span>
+        <p>
+          My Pink Study هو دفتر دراسة وردي لطيف يساعدك على ترتيب مهامك اليومية والأسبوعية بلحظات.
+          في مكان واحد تقدري:
+          تكتبي موادّك، تنظّمي جدولك صباح/بعد الظهر/مساء، تضيفي مهام، وتشوفي تقدّمك.
+          كل شيء ينحفظ تلقائيًا على جهازك — بدون تسجيل دخول أو حسابات معقّدة.
+        </p>
+
+        <div class="points">
+          <div class="point">
+            <strong>بساطة حقيقية:</strong> واجهة نظيفة، أزرار واضحة، وتجربة مريحة للعين.
+          </div>
+          <div class="point">
+            <strong>تحفيز ناعم:</strong> كل إنجاز يفتح لك نافذة إيموجي لطيفة تذكّرك أنك تتحركي للأمام. 🦋✨
+          </div>
+          <div class="point">
+            <strong>حرية كاملة:</strong> أنتِ اللي بتكتبي موادّك ومهامك — مش إحنا.
+          </div>
+          <div class="point">
+            <strong>حفظ تلقائي:</strong> خطتك محفوظة محليًا حتى لو سكّرتي الصفحة.
+          </div>
+        </div>
+
+        <div class="motive">
+          <div class="row"><span>🌟</span><div>كل يوم خطوة صغيرة = إنجاز كبير مع الوقت.</div></div>
+          <div class="row"><span>💪🏻</span><div>ركّزي على أول مهمة بسيطة الآن، والباقي رح يصير أسهل.</div></div>
+          <div class="row"><span>🎯</span><div>قسّمي أهدافك: صباح، بعد الظهر، مساء — وخلي الإنجاز عادة.</div></div>
+          <div class="row"><span>🩷</span><div>اعمليها على زوقِك: الأهم إن الخطة تشبهك وتخدمك.</div></div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <span class="badge">ماذا يقدّم لكِ؟</span>
+        <ul style="margin:.4rem 0 0 0; padding-right:1.1rem; line-height:1.9; color:#6b6472">
+          <li>جدول أسبوعي قابل للتحرير: صباح • بعد الظهر • مساء</li>
+          <li>قائمة مهام مع شريط تقدم ونوافذ تحفيزية</li>
+          <li>مهام سريعة لليوم بعلامة ✓ أو ✗</li>
+          <li>سجل إنجاز أسبوعي خفيف</li>
+        </ul>
+
+        <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap">
+          <a class="btn btn-primary" href="صفحة رئيسية.html">ابدئي التخطيط الآن</a>
+          <a class="btn" href="Get in touch.html">راسلينا باقتراح</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="container">
+    صُنِع بحب بواسطة أماني
+  </footer>
+
+  <script>
+    // حركة خفيفة للفراشات
+    setInterval(()=>{ document.querySelectorAll('.bf').forEach(el=>{ 
+      const dx=(Math.random()*2-1)*10, dy=(Math.random()*2-1)*8; 
+      el.style.transform=`translate(${dx}px,${dy}px)`; 
+    }); },1600);
+  </script>
+</body>
+</html>

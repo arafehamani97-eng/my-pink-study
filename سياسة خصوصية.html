@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>سياسة الخصوصية — My Pink Study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="سياسة الخصوصية لموقع My Pink Study: كيف نتعامل مع بياناتك وكيف تُعرض الإعلانات." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- (اختياري) كود التحقق من جوجل أدسنس يوضع هنا لاحقًا -->
+  <style>
+    :root{
+      --bg:#fff7fb; --ink:#2b2433; --muted:#6b6472;
+      --paper:#ffffff; --line:#ffd7ea; --accent:#ff7eb6; --accent-2:#c084fc; --accent-3:#8be0e0;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:'Cairo',sans-serif; color:var(--ink); background:var(--bg);
+      /* خلفية دفتر */
+      background-image:repeating-linear-gradient(to bottom,var(--bg),var(--bg) 28px,var(--line) 29px,var(--bg) 30px);
+    }
+    .container{max-width:1100px; margin:auto; padding:0 1rem}
+    .nav{position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(6px); background:rgba(255,247,251,.75); border-bottom:1px solid #ffe0ef}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:.9rem 0}
+    .brand{display:flex; align-items:center; gap:.6rem; font-weight:800}
+    .logo{width:28px; height:28px; border-radius:8px; background:conic-gradient(from 90deg,var(--accent),var(--accent-2),var(--accent-3),var(--accent)); box-shadow:0 6px 18px rgba(255,126,182,.22)}
+    .btn{border:1px solid #ffd7ea; background:#fff; color:var(--ink); padding:.55rem .95rem; border-radius:999px; cursor:pointer; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:.45rem}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 20px rgba(255,126,182,.18)}
+    .btn-primary{background:var(--accent); border-color:var(--accent); color:#fff}
+    header{padding:2.6rem 0 1.2rem}
+    h1{font-size:clamp(1.8rem,3.2vw,2.6rem); margin:.2rem 0 .5rem}
+    p.lead{color:var(--muted); margin:0}
+    .grid{display:grid; gap:1rem; grid-template-columns:1fr 1fr}
+    .card{background:#fff; border:1px solid #ffd7ea; border-radius:20px; padding:1.1rem; box-shadow:0 10px 25px rgba(255,126,182,.10)}
+    .badge{display:inline-block; padding:.25rem .6rem; border-radius:999px; background:#fff0f6; border:1px solid #ffd7ea; font-weight:700; color:#d63384; margin-bottom:.35rem}
+    .muted{color:var(--muted)}
+    ul{margin:.3rem 0 0 0; padding-right:1.1rem; line-height:1.9; color:var(--muted)}
+    footer{padding:1.6rem 0; text-align:center; color:#a15e7b; border-top:1px solid #ffd7ea; margin-top:1.4rem}
+    .footer-links{margin-top:.5rem; display:flex; gap:.7rem; justify-content:center; flex-wrap:wrap}
+    @media (max-width:980px){ .grid{grid-template-columns:1fr} }
+
+    /* فراشات لطيفة */
+    .butterflies{position:fixed; inset:0; pointer-events:none; z-index:0}
+    .bf{position:absolute; width:22px; height:18px; background:radial-gradient(circle at 30% 50%, #ff9ac2, #ff7eb6 60%); border-radius:40% 60% 60% 40% / 60% 40% 60% 40%; opacity:.85; filter:drop-shadow(0 4px 10px rgba(255,126,182,.35)); animation:fly 14s linear infinite}
+    .bf::after{content:""; position:absolute; right:-10px; top:0; width:22px; height:18px; background:radial-gradient(circle at 70% 50%, #b388ff, #c084fc 60%); border-radius:60% 40% 40% 60% / 40% 60% 40% 60%; animation:flap 1s ease-in-out infinite}
+    @keyframes fly{0%{transform:translateY(0) translateX(0) rotate(0)}50%{transform:translateY(-40px) translateX(40px) rotate(6deg)}100%{transform:translateY(-80px) translateX(0) rotate(-6deg)}}
+    @keyframes flap{0%,100%{transform:rotate(0)}50%{transform:rotate(8deg)}}
+  </style>
+</head>
+<body>
+  <!-- فراشات -->
+  <div class="butterflies" aria-hidden="true">
+    <div class="bf" style="top:72%; left:8%; animation-duration:16s"></div>
+    <div class="bf" style="top:64%; left:22%; animation-duration:18s"></div>
+    <div class="bf" style="top:78%; left:43%; animation-duration:15s"></div>
+    <div class="bf" style="top:66%; left:71%; animation-duration:17s"></div>
+    <div class="bf" style="top:82%; left:86%; animation-duration:19s"></div>
+  </div>
+
+  
+  <header class="container">
+    <h1>سياسة الخصوصية</h1>
+    <p class="lead">آخر تحديث: 11 نوفمبر 2025 — نحترم خصوصيتك ونسعى لجعل تجربتك ألطف وأأمن 🌸</p>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <!-- بطاقة 1 -->
+      <section class="card">
+        <span class="badge">المحتوى والبيانات المخزّنة محليًا</span>
+        <p class="muted">
+          My Pink Study صُمّم ليعمل بدون إنشاء حسابات أو خوادم. بياناتك تُحفظ محليًا على جهازك عبر LocalStorage فقط.
+        </p>
+        <ul>
+          <li>المهام وقائمة الإنجاز: <code>pink_tasks</code></li>
+          <li>المخطط الأسبوعي: <code>pink_planner</code></li>
+          <li>المواد: <code>pink_subjects</code></li>
+          <li>مهام اليوم السريعة: <code>pink_quick</code></li>
+          <li>سجل الإنجاز: <code>pink_history</code></li>
+        </ul>
+        <p class="muted">لا نرسل هذه البيانات لأي خادم. حذفها يتم من متصفحك مباشرة (زر أدناه).</p>
+        <div style="margin-top:.6rem">
+          <button id="clearData" class="btn">حذف بياناتي المحلية</button>
+        </div>
+      </section>
+
+      <!-- بطاقة 2 -->
+      <section class="card">
+        <span class="badge">الإعلانات وملفات تعريف الارتباط</span>
+        <p class="muted">
+          قد نعرض إعلانات عبر <strong>Google AdSense</strong>. قد تستخدم Google و/أو شركاؤها ملفات تعريف الارتباط لتخصيص الإعلانات وقياس فعاليتها.
+        </p>
+        <ul>
+          <li>يمكنك معرفة المزيد من <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">سياسات إعلانات Google</a>.</li>
+          <li>وصفحـة <a href="https://adssettings.google.com" target="_blank" rel="noopener">إعدادات الإعلانات</a> للتحكم في تخصيص الإعلانات.</li>
+          <li>قد تظهر لك نافذة موافقة على ملفات الارتباط في بعض المناطق (عند التفعيل لاحقًا).</li>
+        </ul>
+        <p class="muted">نحرص على إبقاء الإعلانات خفيفة وغير مزعجة للحفاظ على تجربة لطيفة.</p>
+      </section>
+
+      <!-- بطاقة 3 -->
+      <section class="card">
+        <span class="badge">ماذا لا نجمعه</span>
+        <ul>
+          <li>لا نجمع أسماء أو عناوين بريد إلكتروني أو كلمات مرور.</li>
+          <li>لا نستخدم تحليلات تتبّع خارجية حاليًا.</li>
+          <li>لا نشارك بياناتك مع أطراف ثالثة خارج ما يتطلبه عرض الإعلانات (عند التفعيل).</li>
+        </ul>
+      </section>
+
+      <!-- بطاقة 4 -->
+      <section class="card">
+        <span class="badge">حقوقك وخياراتك</span>
+        <ul>
+          <li>تستطيعين حذف كافة بياناتك المحلية بضغطة زر “حذف بياناتي المحلية”.</li>
+          <li>يمكنك تعطيل ملفات الارتباط من إعدادات المتصفح إن رغبتِ.</li>
+          <li>لأي استفسار، زوري صفحة <a href="Get in touch.html">تواصل معنا  </a>.</li>
+        </ul>
+      </section>
+
+  </main>
+
+  <footer class="container">
+    صُنِع بحب بواسطة أماني
+    <div class="footer-links">
+      <a class="btn" href="Get in touch.html">تواصل معنا</a>
+      <a class="btn btn-primary" href="سياسة خصوصية.html">سياسة الخصوصية</a>
+    </div>
+  </footer>
+
+  <script>
+    // حركة خفيفة للفراشات
+    setInterval(()=>{ document.querySelectorAll('.bf').forEach(el=>{
+      const dx=(Math.random()*2-1)*10, dy=(Math.random()*2-1)*8;
+      el.style.transform=`translate(${dx}px,${dy}px)`;
+    }); },1600);
+
+    // زر حذف البيانات المحلية (نفس مفاتيح التخزين المستخدمة في الموقع)
+    const CLEAR_KEYS = ['pink_planner','pink_tasks','pink_quick','pink_subjects','pink_history'];
+    document.getElementById('clearData')?.addEventListener('click', ()=>{
+      if(confirm('هل أنت متأكدة من حذف بياناتك المحلية المحفوظة على هذا المتصفح؟')){
+        CLEAR_KEYS.forEach(k=> localStorage.removeItem(k));
+        alert('تم حذف بياناتك المحلية بنجاح 🌸');
+      }
+    });
+  </script>
+</body>
+</html>

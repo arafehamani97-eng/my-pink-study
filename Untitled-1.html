@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تواصل معنا — My Pink Study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="راسلينا باقتراحاتك أو استفساراتك — My Pink Study" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fff7fb; --ink:#2b2433; --muted:#6b6472;
+      --paper:#ffffff; --line:#ffd7ea; --accent:#ff7eb6; --accent-2:#c084fc; --accent-3:#8be0e0;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:'Cairo',sans-serif; color:var(--ink); background:var(--bg);
+      /* خلفية دفتر */
+      background-image:repeating-linear-gradient(to bottom,var(--bg),var(--bg) 28px,var(--line) 29px,var(--bg) 30px);
+    }
+    .container{max-width:1100px; margin:auto; padding:0 1rem}
+    /* شريط علوي */
+    .nav{position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(6px); background:rgba(255,247,251,.75); border-bottom:1px solid #ffe0ef}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:.9rem 0}
+    .brand{display:flex; align-items:center; gap:.6rem; font-weight:800}
+    .logo{width:28px; height:28px; border-radius:8px; background:conic-gradient(from 90deg,var(--accent),var(--accent-2),var(--accent-3),var(--accent)); box-shadow:0 6px 18px rgba(255,126,182,.22)}
+    .btn{border:1px solid #ffd7ea; background:#fff; color:var(--ink); padding:.55rem .95rem; border-radius:999px; cursor:pointer; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:.45rem}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 20px rgba(255,126,182,.18)}
+    .btn-primary{background:var(--accent); border-color:var(--accent); color:#fff}
+
+    header{padding:2.6rem 0 1.2rem}
+    h1{font-size:clamp(1.8rem,3.2vw,2.6rem); margin:.2rem 0 .5rem}
+    p.lead{color:var(--muted); margin:0}
+
+    .card{background:#fff; border:1px solid #ffd7ea; border-radius:20px; padding:1.1rem; box-shadow:0 10px 25px rgba(255,126,182,.10)}
+    .form{max-width:760px; margin:0 auto}
+    label{display:block; font-weight:700; margin:.4rem 0 .2rem}
+    input,textarea{
+      width:100%; padding:.7rem; border:1px solid #ffd7ea; border-radius:12px; background:#fff; font-family:'Cairo',sans-serif;
+    }
+    input:focus,textarea:focus{outline:none; box-shadow:0 0 0 3px rgba(255,126,182,.25); border-color:#ffb3d1}
+    .error{color:#d90452; font-size:.92rem; margin-top:.25rem; display:none}
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:1rem}
+    @media (max-width:720px){ .row{grid-template-columns:1fr} }
+    .actions{display:flex; gap:.6rem; align-items:center; margin-top:.8rem}
+    .muted{color:var(--muted)}
+    footer{padding:1.6rem 0; text-align:center; color:#a15e7b; border-top:1px solid #ffd7ea; margin-top:1.4rem}
+    .footer-links{margin-top:.5rem; display:flex; gap:.7rem; justify-content:center; flex-wrap:wrap}
+
+    /* فراشات لطيفة */
+    .butterflies{position:fixed; inset:0; pointer-events:none; z-index:0}
+    .bf{position:absolute; width:22px; height:18px; background:radial-gradient(circle at 30% 50%, #ff9ac2, #ff7eb6 60%); border-radius:40% 60% 60% 40% / 60% 40% 60% 40%; opacity:.85; filter:drop-shadow(0 4px 10px rgba(255,126,182,.35)); animation:fly 14s linear infinite}
+    .bf::after{content:""; position:absolute; right:-10px; top:0; width:22px; height:18px; background:radial-gradient(circle at 70% 50%, #b388ff, #c084fc 60%); border-radius:60% 40% 40% 60% / 40% 60% 40% 60%; animation:flap 1s ease-in-out infinite}
+    @keyframes fly{0%{transform:translateY(0) translateX(0) rotate(0)}50%{transform:translateY(-40px) translateX(40px) rotate(6deg)}100%{transform:translateY(-80px) translateX(0) rotate(-6deg)}}
+    @keyframes flap{0%,100%{transform:rotate(0)}50%{transform:rotate(8deg)}}
+  </style>
+</head>
+<body>
+  <!-- فراشات -->
+  <div class="butterflies" aria-hidden="true">
+    <div class="bf" style="top:72%; left:8%; animation-duration:16s"></div>
+    <div class="bf" style="top:64%; left:22%; animation-duration:18s"></div>
+    <div class="bf" style="top:78%; left:43%; animation-duration:15s"></div>
+    <div class="bf" style="top:66%; left:71%; animation-duration:17s"></div>
+    <div class="bf" style="top:82%; left:86%; animation-duration:19s"></div>
+  </div>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="logo"></span> <span>My Pink Study</span></div>
+      <div style="display:flex; gap:.5rem; align-items:center">
+        <a class="btn" href="index.html">الرئيسية</a>
+        <a class="btn" href="about.html">من نحن</a>
+        <a class="btn btn-primary" href="contact.html">تواصل معنا</a>
+        <a class="btn" href="privacy.html">سياسة الخصوصية</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="container">
+    <h1>تواصل معنا</h1>
+    <p class="lead">يسعدنا نسمع رأيك 🌸 اكتبي بياناتك ورسالتك وسنرد عليك بأقرب وقت.</p>
+  </header>
+
+  <main class="container">
+    <section class="card form">
+      <form id="contactForm" novalidate>
+        <div class="row">
+          <div>
+            <label for="name">الاسم</label>
+            <input id="name" name="name" type="text" placeholder=... required
+                   inputmode="text"
+                   pattern="^[\u0621-\u064Aa-zA-Z\s\-]+$"
+                   title="الاسم يجب أن يحتوي على حروف عربية أو إنجليزية فقط">
+            <div class="error" id="nameErr">الاسم يجب أن يحتوي على حروف فقط بدون أرقام</div>
+          </div>
+          <div>
+            <label for="email">البريد الإلكتروني</label>
+            <input id="email" name="email" type="email" placeholder="@email.com" required>
+            <div class="error" id="emailErr">يرجى إدخال بريد إلكتروني صالح</div>
+          </div>
+        </div>
+
+        <div style="margin-top:.6rem">
+          <label for="message">رسالتك</label>
+          <textarea id="message" name="message" rows="6" placeholder="اكتبي رسالتك هنا..." required></textarea>
+          <div class="error" id="msgErr">الرسالة مطلوبة</div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">إرسال</button>
+          <a class="btn" href="index.html">العودة للصفحة الرئيسية</a>
+          <span class="muted">سيتم التحقق من الحقول قبل الإرسال</span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="container">
+    صُنِع بحب بواسطة أماني
+    <div class="footer-links">
+      <a class="btn" href="index.html">الرئيسية</a>
+      <a class="btn" href="about.html">من نحن</a>
+      <a class="btn btn-primary" href="contact.html">تواصل معنا</a>
+      <a class="btn" href="privacy.html">سياسة الخصوصية</a>
+    </div>
+  </footer>
+
+  <script>
+    // حركة الفراشات
+    setInterval(()=>{ document.querySelectorAll('.bf').forEach(el=>{
+      const dx=(Math.random()*2-1)*10, dy=(Math.random()*2-1)*8;
+      el.style.transform=`translate(${dx}px,${dy}px)`;
+    }); },1600);
+
+    // تحقق الحقول
+    const form = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const msgInput = document.getElementById('message');
+
+    const nameErr = document.getElementById('nameErr');
+    const emailErr = document.getElementById('emailErr');
+    const msgErr = document.getElementById('msgErr');
+
+    // اسم بحروف فقط (عربي/إنجليزي) — منع الأرقام
+    function validateName() {
+      const val = nameInput.value.trim();
+      const hasOnlyLetters = /^[\u0621-\u064Aa-zA-Z\s\-]+$/.test(val);
+      if (!val) {
+        nameErr.textContent = 'الاسم مطلوب';
+        nameErr.style.display = 'block';
+        nameInput.setCustomValidity('الاسم مطلوب');
+        return false;
+      }
+      if (!hasOnlyLetters) {
+        nameErr.textContent = 'الاسم يجب أن يحتوي على حروف فقط بدون أرقام';
+        nameErr.style.display = 'block';
+        nameInput.setCustomValidity('الاسم يجب أن يحتوي على حروف فقط');
+        return false;
+      }
+      nameErr.style.display = 'none';
+      nameInput.setCustomValidity('');
+      return true;
+    }
+
+    function validateEmail() {
+      const val = emailInput.value.trim();
+      if (!val) {
+        emailErr.textContent = 'البريد الإلكتروني مطلوب';
+        emailErr.style.display = 'block';
+        emailInput.setCustomValidity('البريد الإلكتروني مطلوب');
+        return false;
+      }
+      // نعتمد تحقق المتصفح لنمط الإيميل
+      const isValid = emailInput.checkValidity();
+      if (!isValid) {
+        emailErr.textContent = 'يرجى إدخال بريد إلكتروني صالح';
+        emailErr.style.display = 'block';
+        emailInput.setCustomValidity('يرجى إدخال بريد إلكتروني صالح');
+        return false;
+      }
+      emailErr.style.display = 'none';
+      emailInput.setCustomValidity('');
+      return true;
+    }
+
+    function validateMessage() {
+      const val = msgInput.value.trim();
+      if (!val) {
+        msgErr.textContent = 'الرسالة مطلوبة';
+        msgErr.style.display = 'block';
+        msgInput.setCustomValidity('الرسالة مطلوبة');
+        return false;
+      }
+      msgErr.style.display = 'none';
+      msgInput.setCustomValidity('');
+      return true;
+    }
+
+    // اربطي الأحداث للتغذية الراجعة الفورية
+    nameInput.addEventListener('input', validateName);
+    emailInput.addEventListener('input', validateEmail);
+    msgInput.addEventListener('input', validateMessage);
+
+    form.addEventListener('submit', (e)=>{
+      // تنظيف مسافات فارغة حتى ما يمرّ required بالخطأ
+      nameInput.value = nameInput.value.trim();
+      emailInput.value = emailInput.value.trim();
+      msgInput.value = msgInput.value.trim();
+
+      const okName = validateName();
+      const okEmail = validateEmail();
+      const okMsg = validateMessage();
+
+      if (!(okName && okEmail && okMsg)) {
+        e.preventDefault();
+        return false;
+      }
+
+      e.preventDefault(); // ما في باك-إند، نعرض رسالة نجاح فقط
+      alert('شكرًا لتواصلك! 🌸 تم استلام رسالتك بنجاح.');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
